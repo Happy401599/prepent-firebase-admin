@@ -10,15 +10,18 @@ import {
   LoginOutlined
 } from "@ant-design/icons";
 import {
-  NavLink, useHistory
+  NavLink, useHistory, useParams, useLocation
 } from "react-router-dom";
 import {
-  getAuth, signInWithEmailAndPassword, AuthErrorCodes
+  getAuth, signInWithEmailAndPassword, AuthErrorCodes, onAuthStateChanged
 } from "firebase/auth";
+import { useAuth } from "../../components/AuthProvider";
 
 export default function SignInPage(props) {
   const auth = getAuth();
   const history = useHistory();
+  const location = useLocation();
+  const user = useAuth();
 
   const [loading, setLoading] = React.useState(false);
 
@@ -35,7 +38,6 @@ export default function SignInPage(props) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         message.success('You have logged into Prepent admin app successfully.');
-        history.replace('/');
       })
       .catch((error) => {
         console.log(error.code);
@@ -55,6 +57,19 @@ export default function SignInPage(props) {
         setLoading(false);
       });
   };
+
+  React.useEffect(() => {
+    return onAuthStateChanged(auth, (userCredential) => {
+      if (userCredential) {
+        if (location.state.from) {
+          history.replace(location.state.from);
+        }
+        else {
+          history.replace('/');
+        }
+      }
+    });
+  }, []);
 
   return (
     <div style={{

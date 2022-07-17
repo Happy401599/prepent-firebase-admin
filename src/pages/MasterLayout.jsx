@@ -25,6 +25,9 @@ import {
 } from 'firebase/auth';
 
 import DashboardPage from "./DashboardPage";
+import UsersPage from "./UsersPage";
+import CharityPage from "./CharityPage";
+import BlogPage from "./BlogPage";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -164,6 +167,9 @@ export default function MasterLayout(props) {
           }}
         >
           <Switch>
+            <Route path='/user' component={UsersPage} />
+            <Route path='/charity' component={CharityPage} />
+            <Route path='/blog' component={BlogPage} />
             <Route index path='/' component={DashboardPage} />
           </Switch>
         </Content>

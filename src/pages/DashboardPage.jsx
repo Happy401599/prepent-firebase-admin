@@ -11,8 +11,8 @@ export default function DashboardPage(props) {
           margin: '16px 0',
         }}
       >
-        <Breadcrumb.Item>User</Breadcrumb.Item>
-        <Breadcrumb.Item>Bill</Breadcrumb.Item>
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+        <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
       </Breadcrumb>
       <div
         className="site-layout-background"
@@ -21,7 +21,7 @@ export default function DashboardPage(props) {
           minHeight: 360,
         }}
       >
-        Bill is a cat.
+        Dashboard Contents go here
       </div>
     </>
   );

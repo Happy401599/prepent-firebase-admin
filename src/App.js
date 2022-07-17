@@ -10,9 +10,8 @@ import {
 } from "antd";
 import "antd/dist/antd.css";
 
-import {
-  initializeApp
-} from "firebase/app";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 import AuthProvider from "./components/AuthProvider";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -40,6 +39,7 @@ const firebaseConfig = {
   measurementId: "G-NZMYJCBJWB"
 };
 const app = initializeApp(firebaseConfig);
+const firestore = getFirestore(app);
 
 /**
  * AntDesign Components Init

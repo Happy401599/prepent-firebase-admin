@@ -250,7 +250,7 @@ export default function CharityPage(props) {
         <div style={{marginTop: 12}}>
           <label>Description</label>
           <Input.TextArea
-            placeholder="Email Address"
+            placeholder="Description"
             value={charity.description}
             onChange={(ev) => handleOnCharityInfoChange('description', ev.currentTarget.value)}
           />
